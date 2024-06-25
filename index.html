@@ -18,6 +18,32 @@
     <script defer src="scripts/wedding.js"></script>
     <script defer src="scripts/scroll.js"></script>
     <script defer src="scripts/feedback_reg.js"></script>
+    <script defer>
+      window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest1 = urlParams.get('guest1');
+        const guest2 = urlParams.get('guest2');
+        const salutation = urlParams.get('salutation');
+        const you = urlParams.get('you');
+
+        if (salutation) {
+          document.getElementById('salutation').textContent = salutation;
+        }
+
+        if (guest1 && guest2) {
+          document.getElementById('guestName').textContent = `${guest1} и ${guest2}`;
+        } else if (guest1) {
+          document.getElementById('guestName').textContent = guest1;
+        }
+
+        if (you) {
+          const textElements = document.querySelectorAll('.dynamic-text');
+          textElements.forEach(element => {
+            element.textContent = element.textContent.replace('{you}', you);
+          });
+        }
+      }
+    </script>
 </head>
 <body>
     <a href="#"><div id="scroll_btn">↑</div></a>
@@ -25,13 +51,11 @@
     <!-- Block_1 -->
     <div id="block_1_background" class="container">
         <div id="block_1_title_text" class="scroll">
-            <h1>Дорогие</h1>
-            <h1>Александр</h1>
-            <h1>и</h1>
-            <h1>Екатерина!</h1>
+            <h1 id="salutation">Дорогие</h1> <!-- Здесь будет вставлено обращение -->
+            <h1 id="guestName">Гости</h1> <!-- Здесь будут вставлены имена гостей -->
         </div>
         <div class="block_1_info scroll">
-            <div id="block_1_text">Мы приглашаем вас<br>разделить с нами особенный день -<br> нашу свадьбу</div>
+            <div id="block_1_text">Мы приглашаем {you}<br>разделить с нами особенный день -<br> нашу свадьбу</div> <!-- Используем {you} для замены -->
             <div id="block_1_date">
                 <div id="block_1_date_left" class="block_1_blocks">торжественная<br>церемония<br>11:15</div>
                 <div id="block_1_date_center">
