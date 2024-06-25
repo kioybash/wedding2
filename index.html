@@ -33,7 +33,7 @@
         if (guest1 && guest2) {
           document.getElementById('guestName').innerHTML = `${guest1} <br> и <br> ${guest2}!`;
         } else if (guest1) {
-          document.getElementById('guestName').innerHTML = '{guest1}!';
+          document.getElementById('guestName').textContent = `${guest1} !`;
         }
 
         if (you) {
@@ -51,8 +51,8 @@
     <!-- Block_1 -->
     <div id="block_1_background" class="container">
         <div id="block_1_title_text" class="scroll">
-            <h1 id="salutation">Дорогие</h1> <!-- Здесь будет вставлено обращение -->
-            <h1 id="guestName">Гости</h1> <!-- Здесь будут вставлены имена гостей -->
+            <h1 id="salutation"class="dynamic-text">Дорогие</h1> <!-- Здесь будет вставлено обращение -->
+            <h1 id="guestName" class="dynamic-text">Гости</h1> <!-- Здесь будут вставлены имена гостей -->
         </div>
         <div class="block_1_info scroll">
             <div id="block_1_text" class="dynamic-text">Мы приглашаем {you}<br> разделить с нами особенный день -<br> нашу свадьбу</div> <!-- Используем {you} для замены -->
