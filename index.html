@@ -39,7 +39,7 @@
         if (you) {
           const textElements = document.querySelectorAll('.dynamic-text');
           textElements.forEach(element => {
-            element.textContent = element.textContent.replace('{you}', you);
+            element.innerHTML = element.innerHTML.replace('{you}', you);
           });
         }
       }
